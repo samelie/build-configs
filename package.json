@@ -44,12 +44,13 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "prepublishOnly": "pnpm build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "release": "bumpp",
     "types": "tsc -p tsconfig.typecheck.json",
-    "knip": "knip"
+    "knip": "knip",
+    "test": "vitest run",
+    "dev": "tsx src/index.ts"
   },
   "dependencies": {
     "@clack/prompts": "^0.8.2",
