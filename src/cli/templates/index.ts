@@ -14,7 +14,7 @@ export function generateTsupConfig(options: Partial<TsupOptions> = {}): string {
         ...options,
     };
 
-    return `import { makeTsupConfig } from "@rad/build-configs/tsup";
+    return `import { makeTsupConfig } from "@adddog/build-configs/tsup";
 
 export default makeTsupConfig(${JSON.stringify(config, null, 2)});
 `;
@@ -36,7 +36,7 @@ export function generateUnbuildConfig(
         ...options,
     };
 
-    return `import { makeUnbuildConfig } from "@rad/build-configs/unbuild";
+    return `import { makeUnbuildConfig } from "@adddog/build-configs/unbuild";
 
 export default makeUnbuildConfig(${JSON.stringify(config, null, 2)});
 `;

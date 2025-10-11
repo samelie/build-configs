@@ -1,6 +1,6 @@
 # Usage Examples & Verification Commands
 
-This document provides practical examples and verification commands to test all features of `@rad/build-configs`.
+This document provides practical examples and verification commands to test all features of `@adddog/build-configs`.
 
 ## Table of Contents
 
@@ -22,14 +22,14 @@ This document provides practical examples and verification commands to test all 
 mkdir test-project && cd test-project
 npm init -y
 
-# Install @rad/build-configs
-npm install @rad/build-configs
+# Install @adddog/build-configs
+npm install @adddog/build-configs
 
 # Or link locally during development
 cd /path/to/samelie-monorepo/packages/build-configs
 pnpm link --global
 cd /path/to/test-project
-pnpm link --global @rad/build-configs
+pnpm link --global @adddog/build-configs
 ```
 
 ### Verify installation
@@ -121,7 +121,7 @@ wc -c dist/index.mjs
 ```bash
 # Create custom config
 cat > custom.config.ts << 'EOF'
-import { makeTsupConfig } from "@rad/build-configs/tsup";
+import { makeTsupConfig } from "@adddog/build-configs/tsup";
 
 export default makeTsupConfig({
   entry: ["src/index.ts"],
@@ -239,7 +239,7 @@ npx rad-build list-presets | grep -c "^  "  # Should be ~11
 **Test with tsup:**
 ```typescript
 // test-tsup-unified.config.ts
-import { defineBuildConfig } from "@rad/build-configs";
+import { defineBuildConfig } from "@adddog/build-configs";
 
 export default defineBuildConfig({
   type: "tsup",
@@ -260,7 +260,7 @@ ls dist/*.{mjs,cjs} # Both formats should exist
 **Test with unbuild:**
 ```typescript
 // test-unbuild-unified.config.ts
-import { defineBuildConfig } from "@rad/build-configs";
+import { defineBuildConfig } from "@adddog/build-configs";
 
 export default defineBuildConfig({
   type: "unbuild",
@@ -282,7 +282,7 @@ ls dist/*.{mjs,cjs}
 **tsup direct:**
 ```typescript
 // direct-tsup.config.ts
-import { makeTsupConfig } from "@rad/build-configs/tsup";
+import { makeTsupConfig } from "@adddog/build-configs/tsup";
 
 export default makeTsupConfig({
   entry: ["src/index.ts", "src/utils.ts"],
@@ -299,7 +299,7 @@ ls dist/{index,utils}.mjs  # Both entries should exist
 **unbuild direct:**
 ```typescript
 // direct-unbuild.config.ts
-import { makeUnbuildConfig } from "@rad/build-configs/unbuild";
+import { makeUnbuildConfig } from "@adddog/build-configs/unbuild";
 
 export default makeUnbuildConfig({
   entries: ["src/index", "src/utils"],
@@ -455,7 +455,7 @@ echo $?  # Should be 0 (no errors)
 mkdir test-lib && cd test-lib
 npm init -y
 
-# Setup with @rad/build-configs
+# Setup with @adddog/build-configs
 npx rad-build init --preset library-dual
 
 # Create source
@@ -533,7 +533,7 @@ Create a comprehensive test script:
 
 set -e  # Exit on error
 
-echo "=== @rad/build-configs Verification ==="
+echo "=== @adddog/build-configs Verification ==="
 echo ""
 
 # 1. Version check
@@ -635,7 +635,7 @@ Use this checklist to verify all functionality:
 After verification:
 
 1. Test in real monorepo packages
-2. Update existing projects to use @rad/build-configs
+2. Update existing projects to use @adddog/build-configs
 3. Create custom presets for project-specific needs
 4. Report any issues or suggestions
 

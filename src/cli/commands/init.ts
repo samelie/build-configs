@@ -23,7 +23,7 @@ interface InitCommandOptions {
  */
 export async function initCommand(options: InitCommandOptions): Promise<void> {
     try {
-        p.intro(colors.bold("Welcome to @rad/build-configs!"));
+        p.intro(colors.bold("Welcome to @adddog/build-configs!"));
 
         // Check if config already exists
         const tsupConfigExists = existsSync("tsup.config.ts");

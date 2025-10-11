@@ -19,7 +19,7 @@ import { defineConfig } from "tsup";
  *
  * @example
  * ```ts
- * import { makeTsupConfig } from '@rad/build-configs/tsup';
+ * import { makeTsupConfig } from '@adddog/build-configs/tsup';
  *
  * export default makeTsupConfig({
  *   entry: ['src/index.ts', 'src/cli.ts'],

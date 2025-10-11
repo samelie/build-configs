@@ -1,4 +1,4 @@
-# @rad/build-configs
+# @adddog/build-configs
 
 Reusable build configurations and CLI for [tsup](https://tsup.egoist.dev/) and [unbuild](https://github.com/unjs/unbuild) with sensible defaults, presets, and interactive setup.
 
@@ -14,11 +14,11 @@ Reusable build configurations and CLI for [tsup](https://tsup.egoist.dev/) and [
 ## Installation
 
 ```bash
-npm install @rad/build-configs
+npm install @adddog/build-configs
 # or
-pnpm add @rad/build-configs
+pnpm add @adddog/build-configs
 # or
-yarn add @rad/build-configs
+yarn add @adddog/build-configs
 ```
 
 ## Quick Start
@@ -131,7 +131,7 @@ rad-build list-presets
 ### Unified API (Recommended)
 
 ```typescript
-import { defineBuildConfig } from "@rad/build-configs";
+import { defineBuildConfig } from "@adddog/build-configs";
 
 // For tsup
 export default defineBuildConfig({
@@ -155,7 +155,7 @@ export default defineBuildConfig({
 
 **tsup.config.ts:**
 ```typescript
-import { makeTsupConfig } from "@rad/build-configs/tsup";
+import { makeTsupConfig } from "@adddog/build-configs/tsup";
 
 export default makeTsupConfig({
   entry: ["src/index.ts"],
@@ -165,7 +165,7 @@ export default makeTsupConfig({
 
 **build.config.ts:**
 ```typescript
-import { makeUnbuildConfig } from "@rad/build-configs/unbuild";
+import { makeUnbuildConfig } from "@adddog/build-configs/unbuild";
 
 export default makeUnbuildConfig({
   entries: ["src/index"],
@@ -198,6 +198,29 @@ export default makeUnbuildConfig({
 - **`web-component`** - Framework-agnostic web components
 - **`design-system`** - Design system with components and tokens
 
+### Complete Defaults Presets
+
+These presets show **all available configuration options** with their default values. Perfect as a reference or starting point for customization:
+
+- **`complete-tsup`** - Complete tsup config with all common options defined
+- **`complete-unbuild`** - Complete unbuild config with all common options defined
+- **`complete-tsup-full`** - Exhaustive tsup config with every possible option (including advanced features)
+- **`complete-unbuild-full`** - Exhaustive unbuild config with every possible option (including hooks, all builders, etc.)
+
+**Use cases:**
+- Learn all available options for tsup or unbuild
+- Start with a comprehensive config and remove what you don't need
+- Reference for documentation and exploration
+
+**Example:**
+```bash
+# Initialize with complete defaults to see all options
+rad-build init --preset complete-tsup
+
+# Or for unbuild
+rad-build init --preset complete-unbuild
+```
+
 ### Using Presets
 
 **Via CLI:**
@@ -207,7 +230,7 @@ rad-build init --preset library-dual
 
 **Programmatically:**
 ```typescript
-import { getPreset } from "@rad/build-configs/presets";
+import { getPreset } from "@adddog/build-configs/presets";
 
 const preset = getPreset("library-dual");
 ```
@@ -336,8 +359,8 @@ dist/
 ### Custom Config with Preset
 
 ```typescript
-import { makeTsupConfig } from "@rad/build-configs/tsup";
-import { getPreset } from "@rad/build-configs/presets";
+import { makeTsupConfig } from "@adddog/build-configs/tsup";
+import { getPreset } from "@adddog/build-configs/presets";
 
 const preset = getPreset("library-dual");
 
@@ -352,7 +375,7 @@ export default makeTsupConfig({
 ### File-to-File Transpilation (unbuild)
 
 ```typescript
-import { makeUnbuildConfig } from "@rad/build-configs/unbuild";
+import { makeUnbuildConfig } from "@adddog/build-configs/unbuild";
 
 export default makeUnbuildConfig({
   entries: [
@@ -414,7 +437,7 @@ export default defineConfig({
 });
 
 # Convert to unbuild
-import { makeUnbuildConfig } from "@rad/build-configs/unbuild";
+import { makeUnbuildConfig } from "@adddog/build-configs/unbuild";
 
 export default makeUnbuildConfig({
   entries: ["src/index"],
@@ -438,7 +461,7 @@ export default defineBuildConfig({
 });
 
 # Convert to tsup
-import { makeTsupConfig } from "@rad/build-configs/tsup";
+import { makeTsupConfig } from "@adddog/build-configs/tsup";
 
 export default makeTsupConfig({
   entry: ["src/index.ts"],
@@ -459,7 +482,7 @@ pnpm install unbuild tsup
 
 Link the package locally:
 ```bash
-pnpm link @rad/build-configs
+pnpm link @adddog/build-configs
 ```
 
 ### Config validation fails

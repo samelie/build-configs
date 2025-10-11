@@ -19,7 +19,7 @@ import { defineBuildConfig } from "unbuild";
  *
  * @example
  * ```ts
- * import { makeUnbuildConfig } from '@rad/build-configs/unbuild';
+ * import { makeUnbuildConfig } from '@adddog/build-configs/unbuild';
  *
  * export default makeUnbuildConfig({
  *   entries: ['src/index', 'src/cli'],

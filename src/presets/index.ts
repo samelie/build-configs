@@ -1,6 +1,7 @@
 import { libraryPresets } from "./library";
 import { cliPresets } from "./cli";
 import { componentPresets } from "./component";
+import { completePresets } from "./complete";
 import type { PresetCollection, PresetConfig } from "./types";
 
 export type { PresetConfig, PresetCollection, PresetCategory } from "./types";
@@ -12,6 +13,7 @@ export const presets: PresetCollection = {
     ...libraryPresets,
     ...cliPresets,
     ...componentPresets,
+    ...completePresets,
 };
 
 /**
@@ -54,4 +56,5 @@ export const presetCategories = {
     library: libraryPresets,
     cli: cliPresets,
     component: componentPresets,
+    complete: completePresets,
 };
