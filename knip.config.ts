@@ -1,7 +1,5 @@
+import config from "@adddog/config-defaults/knip.config.js";
+
 export default {
-    entry: ["src/index.ts"],
-    project: ["src/**/*.ts"],
-    typescript: {
-        config: ["./tsconfig.json"],
-    },
+    ...config,
 };
