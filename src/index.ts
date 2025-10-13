@@ -3,19 +3,19 @@ import type { BuildConfig as UnbuildConfig } from "unbuild";
 import { makeTsupConfig } from "./tsup.config";
 import { makeUnbuildConfig } from "./unbuild.config";
 
+// Re-export presets
+export {
+    getPreset,
+    getPresetsByBundler,
+    listPresets,
+    presetCategories,
+    presets,
+} from "./presets";
+export type { PresetCategory, PresetCollection, PresetConfig } from "./presets";
+
 // Re-export config makers
 export { makeTsupConfig } from "./tsup.config";
 export { makeUnbuildConfig } from "./unbuild.config";
-
-// Re-export presets
-export {
-    presets,
-    presetCategories,
-    getPreset,
-    listPresets,
-    getPresetsByBundler,
-} from "./presets";
-export type { PresetConfig, PresetCollection, PresetCategory } from "./presets";
 
 // Discriminated union types for type-safe config definition
 export type TsupBuildConfig = {

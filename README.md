@@ -2,7 +2,7 @@
 
 Reusable build configurations and CLI for [tsup](https://tsup.egoist.dev/) and [unbuild](https://github.com/unjs/unbuild) with sensible defaults, presets, and interactive setup.
 
-## Features
+![Features](https://raw.githubusercontent.com/samradical/readme-images/refs/heads/main/crt-fs8.png)
 
 - 🚀 **CLI Tool** - Interactive project initialization and build commands
 - 📦 **Preset System** - Pre-configured setups for common use cases

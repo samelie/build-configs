@@ -1,5 +1,5 @@
-import { buildCommand } from "./build";
 import { logger } from "../utils/logger";
+import { buildCommand } from "./build";
 
 interface WatchCommandOptions {
     config?: string;

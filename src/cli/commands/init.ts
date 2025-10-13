@@ -1,16 +1,16 @@
-import * as p from "@clack/prompts";
 import { existsSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { getPackageJson, updatePackageJson } from "../utils/config-loader";
-import { colors, logError } from "../utils/logger";
+import * as p from "@clack/prompts";
+import { getPreset, listPresets } from "../../presets";
 import {
+    generatePackageJsonExports,
+    generatePackageJsonScripts,
     generateTsupConfig,
     generateUnbuildConfig,
-    generatePackageJsonScripts,
-    generatePackageJsonExports,
 } from "../templates";
-import { getPreset, listPresets } from "../../presets";
+import { getPackageJson, updatePackageJson } from "../utils/config-loader";
+import { colors, logError } from "../utils/logger";
 
 interface InitCommandOptions {
     bundler?: "tsup" | "unbuild";
@@ -84,7 +84,7 @@ export async function initCommand(options: InitCommandOptions): Promise<void> {
 
         if (usePreset === "preset") {
             // Get presets for selected bundler
-            const availablePresets = listPresets().filter((name) => {
+            const availablePresets = listPresets().filter(name => {
                 const preset = getPreset(name);
                 return (
                     preset &&
@@ -94,7 +94,7 @@ export async function initCommand(options: InitCommandOptions): Promise<void> {
 
             const presetChoice = await p.select({
                 message: "Select a preset:",
-                options: availablePresets.map((name) => {
+                options: availablePresets.map(name => {
                     const preset = getPreset(name)!;
                     return {
                         value: name,
@@ -196,7 +196,7 @@ export async function initCommand(options: InitCommandOptions): Promise<void> {
 
                 await updatePackageJson({
                     scripts: { ...pkg.scripts, ...scripts },
-                    exports: exports,
+                    exports,
                     main:
                         finalConfig.format?.includes("cjs") ||
                         finalConfig.rollup?.emitCJS

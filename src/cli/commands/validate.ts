@@ -1,6 +1,6 @@
-import { loadConfig, discoverConfigFile } from "../utils/config-loader";
+import { discoverConfigFile, loadConfig } from "../utils/config-loader";
+import { colors, logError, logger, logSuccess } from "../utils/logger";
 import { validateConfig } from "../utils/validators";
-import { logger, logSuccess, logError, colors } from "../utils/logger";
 
 interface ValidateCommandOptions {
     config?: string;
@@ -72,7 +72,7 @@ export async function validateCommand(
             // Show validation errors
             if (result.error) {
                 logger.error("\nValidation errors:");
-                result.error.errors.forEach((err) => {
+                result.error.errors.forEach(err => {
                     logger.error(`  ${colors.error("•")} ${err.path.join(".")}: ${err.message}`);
                 });
             }

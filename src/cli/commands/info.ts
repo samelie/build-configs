@@ -1,5 +1,5 @@
-import { loadConfig, discoverConfigFile, getPackageJson } from "../utils/config-loader";
-import { logger, logBox, colors } from "../utils/logger";
+import { discoverConfigFile, getPackageJson, loadConfig } from "../utils/config-loader";
+import { colors, logBox, logger } from "../utils/logger";
 
 interface InfoCommandOptions {
     config?: string;
@@ -46,75 +46,75 @@ export async function infoCommand(options: InfoCommandOptions): Promise<void> {
 
         // Display build configuration
         if (bundler !== "none") {
-            console.log("\n" + colors.bold("Build Configuration:"));
+            console.log(`\n${colors.bold("Build Configuration:")}`);
 
             if (bundler === "tsup") {
                 const tsupConfig = config as any;
-                console.log(colors.dim("├─") + " Entry:      " + JSON.stringify(tsupConfig.entry ?? ["src/index.ts"]));
-                console.log(colors.dim("├─") + " Format:     " + JSON.stringify(tsupConfig.format ?? ["esm", "cjs"]));
+                console.log(`${colors.dim("├─")} Entry:      ${JSON.stringify(tsupConfig.entry ?? ["src/index.ts"])}`);
+                console.log(`${colors.dim("├─")} Format:     ${JSON.stringify(tsupConfig.format ?? ["esm", "cjs"])}`);
                 console.log(
-                    colors.dim("├─") + " Target:     " + (tsupConfig.target ?? "node18"),
+                    `${colors.dim("├─")} Target:     ${tsupConfig.target ?? "node18"}`,
                 );
                 console.log(
-                    colors.dim("├─") + " Platform:   " + (tsupConfig.platform ?? "node"),
+                    `${colors.dim("├─")} Platform:   ${tsupConfig.platform ?? "node"}`,
                 );
                 console.log(
-                    colors.dim("├─") + " DTS:        " + (tsupConfig.dts !== false ? colors.success("✓") : colors.dim("✗")),
+                    `${colors.dim("├─")} DTS:        ${tsupConfig.dts !== false ? colors.success("✓") : colors.dim("✗")}`,
                 );
                 console.log(
-                    colors.dim("├─") + " Sourcemap:  " +
-                        (tsupConfig.sourcemap !== false ? colors.success("✓") : colors.dim("✗")),
+                    `${colors.dim("├─")} Sourcemap:  ${
+                        tsupConfig.sourcemap !== false ? colors.success("✓") : colors.dim("✗")}`,
                 );
                 console.log(
-                    colors.dim("├─") + " Minify:     " + (tsupConfig.minify ? colors.success("✓") : colors.dim("✗")),
+                    `${colors.dim("├─")} Minify:     ${tsupConfig.minify ? colors.success("✓") : colors.dim("✗")}`,
                 );
                 console.log(
-                    colors.dim("└─") + " Clean:      " +
-                        (tsupConfig.clean !== false ? colors.success("✓") : colors.dim("✗")),
+                    `${colors.dim("└─")} Clean:      ${
+                        tsupConfig.clean !== false ? colors.success("✓") : colors.dim("✗")}`,
                 );
             } else {
                 const unbuildConfig = config as any;
                 console.log(
-                    colors.dim("├─") + " Entries:      " +
-                        JSON.stringify(unbuildConfig.entries ?? ["src/index"]),
+                    `${colors.dim("├─")} Entries:      ${
+                        JSON.stringify(unbuildConfig.entries ?? ["src/index"])}`,
                 );
                 console.log(
-                    colors.dim("├─") + " Out Dir:      " + (unbuildConfig.outDir ?? "dist"),
+                    `${colors.dim("├─")} Out Dir:      ${unbuildConfig.outDir ?? "dist"}`,
                 );
                 console.log(
-                    colors.dim("├─") + " Declaration:  " +
-                        (unbuildConfig.declaration !== false
+                    `${colors.dim("├─")} Declaration:  ${
+                        unbuildConfig.declaration !== false
                             ? colors.success("✓")
-                            : colors.dim("✗")),
+                            : colors.dim("✗")}`,
                 );
                 console.log(
-                    colors.dim("├─") + " Emit CJS:     " +
-                        (unbuildConfig.rollup?.emitCJS
+                    `${colors.dim("├─")} Emit CJS:     ${
+                        unbuildConfig.rollup?.emitCJS
                             ? colors.success("✓")
-                            : colors.dim("✗")),
+                            : colors.dim("✗")}`,
                 );
                 console.log(
-                    colors.dim("├─") + " Sourcemap:    " +
-                        (unbuildConfig.sourcemap ? colors.success("✓") : colors.dim("✗")),
+                    `${colors.dim("├─")} Sourcemap:    ${
+                        unbuildConfig.sourcemap ? colors.success("✓") : colors.dim("✗")}`,
                 );
                 console.log(
-                    colors.dim("├─") + " Parallel:     " +
-                        (unbuildConfig.parallel !== false
+                    `${colors.dim("├─")} Parallel:     ${
+                        unbuildConfig.parallel !== false
                             ? colors.success("✓")
-                            : colors.dim("✗")),
+                            : colors.dim("✗")}`,
                 );
                 console.log(
-                    colors.dim("└─") + " Clean:        " +
-                        (unbuildConfig.clean !== false
+                    `${colors.dim("└─")} Clean:        ${
+                        unbuildConfig.clean !== false
                             ? colors.success("✓")
-                            : colors.dim("✗")),
+                            : colors.dim("✗")}`,
                 );
             }
         }
 
         // Display package.json exports
         if (pkg?.exports) {
-            console.log("\n" + colors.bold("Package Exports:"));
+            console.log(`\n${colors.bold("Package Exports:")}`);
             console.log(JSON.stringify(pkg.exports, null, 2));
         }
 
@@ -125,7 +125,7 @@ export async function infoCommand(options: InfoCommandOptions): Promise<void> {
             );
 
             if (buildScripts.length > 0) {
-                console.log("\n" + colors.bold("Build Scripts:"));
+                console.log(`\n${colors.bold("Build Scripts:")}`);
                 buildScripts.forEach(([name, script]) => {
                     console.log(`  ${colors.command(name.padEnd(20))} ${colors.dim(script as string)}`);
                 });
@@ -134,11 +134,11 @@ export async function infoCommand(options: InfoCommandOptions): Promise<void> {
 
         // Show next steps if not configured
         if (bundler === "none") {
-            console.log("\n" + colors.warning("⚠ No build configuration found"));
+            console.log(`\n${colors.warning("⚠ No build configuration found")}`);
             console.log(
                 colors.info("\nRun ") +
-                    colors.command("rad-build init") +
-                    colors.info(" to set up your project"),
+                colors.command("rad-build init") +
+                colors.info(" to set up your project"),
             );
         }
     } catch (error) {

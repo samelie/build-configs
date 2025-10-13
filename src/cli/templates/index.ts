@@ -53,9 +53,9 @@ export function generatePackageJsonScripts(
         bundler === "tsup" ? "tsup --watch" : "unbuild --watch";
 
     return {
-        build: buildCommand,
+        "build": buildCommand,
         "build:watch": watchCommand,
-        prepublishOnly: "pnpm build",
+        "prepublishOnly": "pnpm build",
     };
 }
 

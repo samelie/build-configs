@@ -91,7 +91,7 @@ export function logBundler(bundler: "tsup" | "unbuild"): void {
 export function logBox(title: string, content: string[]): void {
     const maxLength = Math.max(
         title.length,
-        ...content.map((line) => line.length),
+        ...content.map(line => line.length),
     );
     const border = "─".repeat(maxLength + 4);
 
@@ -100,7 +100,7 @@ export function logBox(title: string, content: string[]): void {
         colors.primary(`│  ${colors.bold(title.padEnd(maxLength))}  │`),
     );
     console.log(colors.primary(`├${border}┤`));
-    content.forEach((line) => {
+    content.forEach(line => {
         console.log(colors.primary(`│  ${line.padEnd(maxLength)}  │`));
     });
     console.log(colors.primary(`└${border}┘`));

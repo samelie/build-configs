@@ -5,7 +5,14 @@
   "type": "module",
   "author": "Sam Elie <sam@add.dog>",
   "license": "MIT",
-  "bugs": {},
+  "homepage": "https://github.com/samelie/build-configs#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samelie/build-configs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samelie/build-configs/issues"
+  },
   "keywords": [
     "tsup",
     "unbuild",
@@ -48,6 +55,8 @@
     "lint:fix": "eslint --fix .",
     "release": "bumpp",
     "types": "tsc -p tsconfig.typecheck.json",
+    "prepublishOnly": "pnpm run lint && pnpm run types && pnpm run build",
+    "prepack": "pnpm run prepublishOnly",
     "knip": "knip",
     "test": "vitest run",
     "dev": "tsx src/index.ts"
@@ -65,8 +74,8 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@adddog/eslint": "workspace:*",
     "@rad/config": "workspace:*",
-    "@rad/eslint": "workspace:*",
     "@types/node": "^22.18.10",
     "bumpp": "^10.3.1",
     "eslint": "^9.37.0",

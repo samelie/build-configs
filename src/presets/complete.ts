@@ -212,7 +212,7 @@ export const completePresets: PresetCollection = {
 
             // === Code Transformation ===
             define: {
-                __VERSION__: JSON.stringify("1.0.0"),
+                "__VERSION__": JSON.stringify("1.0.0"),
                 "process.env.NODE_ENV": JSON.stringify("production"),
             },
             env: {
@@ -308,7 +308,7 @@ export const completePresets: PresetCollection = {
                 "@utils": "./src/utils",
             },
             replace: {
-                __VERSION__: "1.0.0",
+                "__VERSION__": "1.0.0",
                 "process.env.NODE_ENV": "production",
             },
 
@@ -392,13 +392,13 @@ export const completePresets: PresetCollection = {
 
             // === Hooks ===
             hooks: {
-                "build:prepare": async (_ctx) => {
+                "build:prepare": async _ctx => {
                     console.log("Preparing build...");
                 },
-                "build:before": async (_ctx) => {
+                "build:before": async _ctx => {
                     console.log("Starting build...");
                 },
-                "build:done": async (_ctx) => {
+                "build:done": async _ctx => {
                     console.log("Build complete!");
                 },
             },

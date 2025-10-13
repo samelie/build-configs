@@ -1,10 +1,10 @@
-import { existsSync } from "node:fs";
-import { readFile } from "node:fs/promises";
-import { resolve, join } from "node:path";
-import { createJiti } from "jiti";
-import { defu } from "defu";
 import type { Options as TsupOptions } from "tsup";
 import type { BuildConfig as UnbuildConfig } from "unbuild";
+import { existsSync } from "node:fs";
+import { readFile } from "node:fs/promises";
+import { join, resolve } from "node:path";
+import { defu } from "defu";
+import { createJiti } from "jiti";
 import { getPreset } from "../../presets";
 import { logger } from "./logger";
 
@@ -249,5 +249,5 @@ export async function updatePackageJson(
     const pkg = (await getPackageJson(cwd)) ?? {};
     const updated = defu(updates, pkg);
 
-    await writeFile(pkgPath, JSON.stringify(updated, null, 2) + "\n");
+    await writeFile(pkgPath, `${JSON.stringify(updated, null, 2)}\n`);
 }

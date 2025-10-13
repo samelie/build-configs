@@ -2,14 +2,14 @@
 
 import { cac } from "cac";
 import { version } from "../../package.json";
-import { logger, colors, logBox } from "./utils/logger";
-
 // Import commands (will be created next)
 import { buildCommand } from "./commands/build";
-import { initCommand} from "./commands/init";
-import { validateCommand } from "./commands/validate";
+
 import { infoCommand } from "./commands/info";
+import { initCommand } from "./commands/init";
+import { validateCommand } from "./commands/validate";
 import { watchCommand } from "./commands/watch";
+import { colors, logBox, logger } from "./utils/logger";
 
 const cli = cac("rad-build");
 
@@ -80,7 +80,7 @@ cli.command("list-presets", "List all available presets").action(async () => {
 cli.parse();
 
 // Handle errors
-process.on("unhandledRejection", (error) => {
+process.on("unhandledRejection", error => {
     logger.error("Unhandled error:", error as Error);
     process.exit(1);
 });
