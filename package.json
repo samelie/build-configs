@@ -85,7 +85,6 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "private": false,
   "engines": {
     "node": ">= 22",
     "pnpm": ">= 10",
