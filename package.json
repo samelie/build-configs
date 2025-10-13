@@ -81,7 +81,7 @@
     "eslint": "^9.37.0",
     "typescript": "^5.9.3"
   },
- "publishConfig": {
+  "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
