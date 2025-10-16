@@ -1,4 +1,5 @@
 import type { PresetCollection } from "./types";
+import process from "node:process";
 
 /**
  * Complete default presets showing ALL available options
@@ -393,13 +394,13 @@ export const completePresets: PresetCollection = {
             // === Hooks ===
             hooks: {
                 "build:prepare": async _ctx => {
-                    console.log("Preparing build...");
+                    console.warn("Preparing build...");
                 },
                 "build:before": async _ctx => {
-                    console.log("Starting build...");
+                    console.warn("Starting build...");
                 },
                 "build:done": async _ctx => {
-                    console.log("Build complete!");
+                    console.warn("Build complete!");
                 },
             },
         },

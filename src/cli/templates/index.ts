@@ -65,7 +65,7 @@ export function generatePackageJsonScripts(
 export function generatePackageJsonExports(
     _bundler: "tsup" | "unbuild",
     formats: string[],
-): Record<string, any> {
+): Record<string, string | Record<string, string>> {
     const hasESM = formats.includes("esm");
     const hasCJS = formats.includes("cjs");
 

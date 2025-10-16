@@ -3,6 +3,7 @@ import type { BuildConfig as UnbuildConfig } from "unbuild";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
+import process from "node:process";
 import { defu } from "defu";
 import { createJiti } from "jiti";
 import { getPreset } from "../../presets";
@@ -49,7 +50,7 @@ export async function detectBundler(
                 const jiti = createJiti(cwd, {
                     interopDefault: true,
                 });
-                const config = (await jiti.import(configPath)) as any;
+                const config = (await jiti.import(configPath)) as TsupOptions | UnbuildConfig;
 
                 // Check if config has unbuild-specific properties
                 if (
@@ -225,7 +226,7 @@ export async function loadConfig(options: {
  */
 export async function getPackageJson(
     cwd: string = process.cwd(),
-): Promise<Record<string, any> | null> {
+): Promise<Record<string, unknown> | null> {
     try {
         const pkgPath = join(cwd, "package.json");
         if (!existsSync(pkgPath)) return null;
@@ -240,7 +241,7 @@ export async function getPackageJson(
  * Update package.json with new fields
  */
 export async function updatePackageJson(
-    updates: Record<string, any>,
+    updates: Record<string, unknown>,
     cwd: string = process.cwd(),
 ): Promise<void> {
     const { writeFile } = await import("node:fs/promises");

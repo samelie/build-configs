@@ -1,3 +1,6 @@
+import type { Options as TsupOptions } from "tsup";
+import type { BuildConfig as UnbuildConfig } from "unbuild";
+import process from "node:process";
 import { discoverConfigFile, loadConfig } from "../utils/config-loader";
 import { colors, logError, logger, logSuccess } from "../utils/logger";
 import { validateConfig } from "../utils/validators";
@@ -47,7 +50,7 @@ export async function validateCommand(
             // Show some config details
             logger.info("\nConfiguration summary:");
             if (bundler === "tsup") {
-                const tsupConfig = config as any;
+                const tsupConfig = config as TsupOptions;
                 logger.info(`  Entry: ${JSON.stringify(tsupConfig.entry ?? ["src/index.ts"])}`);
                 logger.info(`  Format: ${JSON.stringify(tsupConfig.format ?? ["esm", "cjs"])}`);
                 logger.info(`  DTS: ${tsupConfig.dts !== false ? "enabled" : "disabled"}`);
@@ -55,7 +58,7 @@ export async function validateCommand(
                     `  Sourcemap: ${tsupConfig.sourcemap !== false ? "enabled" : "disabled"}`,
                 );
             } else {
-                const unbuildConfig = config as any;
+                const unbuildConfig = config as UnbuildConfig;
                 logger.info(
                     `  Entries: ${JSON.stringify(unbuildConfig.entries ?? ["src/index"])}`,
                 );

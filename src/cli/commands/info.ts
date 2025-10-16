@@ -1,3 +1,6 @@
+import type { Options as TsupOptions } from "tsup";
+import type { BuildConfig as UnbuildConfig } from "unbuild";
+import process from "node:process";
 import { discoverConfigFile, getPackageJson, loadConfig } from "../utils/config-loader";
 import { colors, logBox, logger } from "../utils/logger";
 
@@ -25,7 +28,7 @@ export async function infoCommand(options: InfoCommandOptions): Promise<void> {
 
         // Load config if exists
         let bundler: "tsup" | "unbuild" | "none" = "none";
-        let config: any = {};
+        let config: TsupOptions | UnbuildConfig = {};
 
         if (configPath) {
             const loaded = await loadConfig({
@@ -49,7 +52,7 @@ export async function infoCommand(options: InfoCommandOptions): Promise<void> {
             console.log(`\n${colors.bold("Build Configuration:")}`);
 
             if (bundler === "tsup") {
-                const tsupConfig = config as any;
+                const tsupConfig = config as TsupOptions;
                 console.log(`${colors.dim("├─")} Entry:      ${JSON.stringify(tsupConfig.entry ?? ["src/index.ts"])}`);
                 console.log(`${colors.dim("├─")} Format:     ${JSON.stringify(tsupConfig.format ?? ["esm", "cjs"])}`);
                 console.log(
@@ -73,7 +76,7 @@ export async function infoCommand(options: InfoCommandOptions): Promise<void> {
                         tsupConfig.clean !== false ? colors.success("✓") : colors.dim("✗")}`,
                 );
             } else {
-                const unbuildConfig = config as any;
+                const unbuildConfig = config as UnbuildConfig;
                 console.log(
                     `${colors.dim("├─")} Entries:      ${
                         JSON.stringify(unbuildConfig.entries ?? ["src/index"])}`,

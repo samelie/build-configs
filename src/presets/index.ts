@@ -4,8 +4,6 @@ import { completePresets } from "./complete";
 import { componentPresets } from "./component";
 import { libraryPresets } from "./library";
 
-export type { PresetCategory, PresetCollection, PresetConfig } from "./types";
-
 /**
  * All available presets organized by category
  */

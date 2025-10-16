@@ -1,6 +1,9 @@
+import type { Options as TsupOptions } from "tsup";
+import type { BuildConfig as UnbuildConfig } from "unbuild";
 import { existsSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import process from "node:process";
 import * as p from "@clack/prompts";
 import { getPreset, listPresets } from "../../presets";
 import {
@@ -80,7 +83,7 @@ export async function initCommand(options: InitCommandOptions): Promise<void> {
         }
 
         let selectedPreset: string | undefined;
-        let finalConfig: any = {};
+        let finalConfig: Partial<TsupOptions | UnbuildConfig> = {};
 
         if (usePreset === "preset") {
             // Get presets for selected bundler

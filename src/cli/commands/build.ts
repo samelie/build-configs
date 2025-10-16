@@ -2,6 +2,7 @@ import type { Options as TsupOptions } from "tsup";
 import type { BuildConfig as UnbuildConfig } from "unbuild";
 import { existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import process from "node:process";
 import { execa } from "execa";
 import { makeTsupConfig } from "../../tsup.config";
 import { makeUnbuildConfig } from "../../unbuild.config";
@@ -31,26 +32,29 @@ export async function buildCommand(
         logger.start("Building project...");
 
         // Parse CLI flags
-        const cliFlags: Partial<TsupOptions> & Partial<UnbuildConfig> = {};
+        const cliFlags: Partial<TsupOptions & UnbuildConfig> = {};
         if (options.format) {
-            (cliFlags as any).format = options.format.split(",");
+            // Both tsup and unbuild support format
+            cliFlags.format = options.format.split(",") as ("esm" | "cjs" | "iife")[];
         }
         if (options.minify !== undefined) {
-            (cliFlags as any).minify = options.minify;
+            // Both tsup and unbuild support minify
+            cliFlags.minify = options.minify;
         }
         if (options.sourcemap !== undefined) {
             cliFlags.sourcemap = options.sourcemap;
         }
         if (options.dts !== undefined) {
-            (cliFlags as any).dts = options.dts;
-            (cliFlags as any).declaration = options.dts;
+            // tsup uses dts, unbuild uses declaration
+            (cliFlags as Partial<TsupOptions>).dts = options.dts;
+            (cliFlags as Partial<UnbuildConfig>).declaration = options.dts;
         }
         if (options.clean !== undefined) {
             cliFlags.clean = options.clean;
         }
         if (entries.length > 0) {
-            (cliFlags as TsupOptions).entry = entries;
-            (cliFlags as UnbuildConfig).entries = entries;
+            (cliFlags as Partial<TsupOptions>).entry = entries;
+            (cliFlags as Partial<UnbuildConfig>).entries = entries;
         }
 
         // Load merged config
