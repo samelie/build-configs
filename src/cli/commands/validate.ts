@@ -75,7 +75,7 @@ export async function validateCommand(
             // Show validation errors
             if (result.error) {
                 logger.error("\nValidation errors:");
-                result.error.issues.forEach((err) => {
+                result.error.issues.forEach(err => {
                     logger.error(`  ${colors.error("•")} ${String(err.path.join("."))}: ${err.message}`);
                 });
             }
