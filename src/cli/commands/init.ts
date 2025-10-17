@@ -83,7 +83,7 @@ export async function initCommand(options: InitCommandOptions): Promise<void> {
         }
 
         let selectedPreset: string | undefined;
-        let finalConfig: Partial<TsupOptions | UnbuildConfig> = {};
+        let finalConfig: Partial<TsupOptions & UnbuildConfig> = {};
 
         if (usePreset === "preset") {
             // Get presets for selected bundler
@@ -116,8 +116,7 @@ export async function initCommand(options: InitCommandOptions): Promise<void> {
 
             const preset = getPreset(selectedPreset as string);
             if (preset) {
-                finalConfig =
-                    bundler === "tsup" ? preset.tsup ?? {} : preset.unbuild ?? {};
+                finalConfig = (bundler === "tsup" ? preset.tsup ?? {} : preset.unbuild ?? {}) as Partial<TsupOptions & UnbuildConfig>;
             }
         } else {
             // Custom configuration
@@ -155,8 +154,9 @@ export async function initCommand(options: InitCommandOptions): Promise<void> {
             }
 
             // Build config from answers
+            const formatsArray = formats as string[];
             finalConfig = {
-                format: formats,
+                format: formatsArray as TsupOptions["format"],
                 sourcemap: (features as string[]).includes("sourcemaps"),
                 minify: (features as string[]).includes("minify"),
             };
@@ -183,8 +183,8 @@ export async function initCommand(options: InitCommandOptions): Promise<void> {
                 bundler === "tsup" ? "tsup.config.ts" : "build.config.ts";
             const configContent =
                 bundler === "tsup"
-                    ? generateTsupConfig(finalConfig)
-                    : generateUnbuildConfig(finalConfig);
+                    ? generateTsupConfig(finalConfig as Partial<TsupOptions>)
+                    : generateUnbuildConfig(finalConfig as Partial<UnbuildConfig>);
 
             await writeFile(join(process.cwd(), configFileName), configContent);
 
@@ -192,16 +192,25 @@ export async function initCommand(options: InitCommandOptions): Promise<void> {
             const pkg = await getPackageJson();
             if (pkg) {
                 const scripts = generatePackageJsonScripts(bundler);
+                const formatArray = Array.isArray(finalConfig.format)
+                    ? finalConfig.format
+                    : finalConfig.format
+                        ? [finalConfig.format]
+                        : ["esm", "cjs"];
                 const exports = generatePackageJsonExports(
                     bundler,
-                    finalConfig.format ?? ["esm", "cjs"],
+                    formatArray as string[],
                 );
 
+                const pkgScripts = typeof pkg.scripts === "object" && pkg.scripts !== null
+                    ? (pkg.scripts as Record<string, string>)
+                    : {};
+
                 await updatePackageJson({
-                    scripts: { ...pkg.scripts, ...scripts },
+                    scripts: { ...pkgScripts, ...scripts },
                     exports,
                     main:
-                        finalConfig.format?.includes("cjs") ||
+                        formatArray.includes("cjs") ||
                         finalConfig.rollup?.emitCJS
                             ? "./dist/index.cjs"
                             : undefined,

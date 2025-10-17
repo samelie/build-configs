@@ -54,9 +54,9 @@ export async function detectBundler(
 
                 // Check if config has unbuild-specific properties
                 if (
-                    config.entries ||
-                    config.rollup ||
-                    (config[0] && config[0].entries)
+                    "entries" in config ||
+                    "rollup" in config ||
+                    (Array.isArray(config) && config[0] && "entries" in config[0])
                 ) {
                     return "unbuild";
                 }

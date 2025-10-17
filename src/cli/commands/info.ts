@@ -17,8 +17,8 @@ export async function infoCommand(options: InfoCommandOptions): Promise<void> {
 
         // Get package.json
         const pkg = await getPackageJson();
-        const projectName = pkg?.name ?? "unknown";
-        const projectVersion = pkg?.version ?? "0.0.0";
+        const projectName = (pkg?.name as string | undefined) ?? "unknown";
+        const projectVersion = (pkg?.version as string | undefined) ?? "0.0.0";
 
         // Discover config file
         const configPath = await discoverConfigFile(
