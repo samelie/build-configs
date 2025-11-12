@@ -76,7 +76,7 @@
   "devDependencies": {
     "@adddog/eslint": "workspace:*",
     "@rad/config": "workspace:*",
-    "@types/node": "^22.19.0",
+    "@types/node": "^22.19.1",
     "bumpp": "^10.3.1",
     "eslint": "^9.39.1",
     "typescript": "^5.9.3"
