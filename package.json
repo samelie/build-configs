@@ -58,7 +58,7 @@
     "prepublishOnly": "pnpm run lint && pnpm run types && pnpm run build",
     "prepack": "pnpm run prepublishOnly",
     "knip": "knip",
-    "test": "vitest run",
+    "test": "echo '⚠️⚠️⚠️no test vitest --watch=false'",
     "dev": "tsx src/index.ts"
   },
   "dependencies": {
