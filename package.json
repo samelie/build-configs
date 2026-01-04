@@ -71,7 +71,7 @@
     "picocolors": "^1.1.1",
     "tsup": "^8.5.1",
     "unbuild": "^3.6.1",
-    "zod": "^4.3.4"
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@adddog/eslint": "workspace:*",
