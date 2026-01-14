@@ -57,9 +57,9 @@
     "types": "tsc -p tsconfig.typecheck.json",
     "prepublishOnly": "pnpm run lint && pnpm run types && pnpm run build",
     "prepack": "pnpm run prepublishOnly",
-    "knip": "knip",
     "test": "echo '⚠️⚠️⚠️no test vitest --watch=false'",
-    "dev": "tsx src/index.ts"
+    "dev": "tsx src/index.ts",
+    "knip": "knip"
   },
   "dependencies": {
     "@clack/prompts": "^0.11.0",
@@ -76,8 +76,8 @@
   "devDependencies": {
     "@adddog/eslint": "workspace:*",
     "@rad/config": "workspace:*",
-    "@types/node": "^25.0.7",
-    "bumpp": "^10.3.2",
+    "@types/node": "^25.0.8",
+    "bumpp": "^10.4.0",
     "eslint": "^9.39.2",
     "typescript": "^5.9.3"
   },
