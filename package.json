@@ -71,12 +71,11 @@
     "picocolors": "^1.1.1",
     "tsup": "^8.5.1",
     "unbuild": "^3.6.1",
-    "zod": "^4.3.5"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@adddog/eslint": "workspace:*",
     "@rad/config": "workspace:*",
-    "@types/node": "^25.0.9",
+    "@types/node": "^25.0.10",
     "bumpp": "^10.4.0",
     "eslint": "^9.39.2",
     "typescript": "^5.9.3"
