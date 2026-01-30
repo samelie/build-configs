@@ -62,7 +62,7 @@
     "knip": "knip"
   },
   "dependencies": {
-    "@clack/prompts": "^0.11.0",
+    "@clack/prompts": "^1.0.0",
     "cac": "^6.7.14",
     "consola": "^3.4.2",
     "defu": "^6.1.4",
@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@rad/config": "workspace:*",
-    "@types/node": "^25.0.10",
+    "@types/node": "^25.1.0",
     "bumpp": "^10.4.0",
     "eslint": "^9.39.2",
     "typescript": "^5.9.3"
