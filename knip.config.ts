@@ -11,10 +11,12 @@ export default defineKnipConfig({
         "src/cli/index.ts",
     ],
     project: ["src/**/*.ts"],
+    // WHY: knip/tsx not in devDeps, used in scripts
     ignoreBinaries: ["knip", "tsx"],
     ignoreDependencies: [
+        // WHY: workspace config dep, not directly imported
         "@rad/config",
-        // CLI dependencies - used in src/cli but knip can't trace unbuild entries
+        // WHY: CLI deps used in src/cli — knip can't trace unbuild entries
         "@clack/prompts",
         "cac",
         "consola",
@@ -23,8 +25,8 @@ export default defineKnipConfig({
         "picocolors",
         "zod",
     ],
+    // WHY: CLI and presets built via unbuild entries, knip can't trace them
     ignore: [
-        // CLI and presets are built via unbuild entries, knip can't trace them
         "src/cli/**",
         "src/presets/**",
     ],
