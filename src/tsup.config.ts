@@ -1,5 +1,4 @@
 import type { Options } from "tsup";
-import { defineConfig } from "tsup";
 
 /**
  * Creates a tsup configuration with sensible defaults for Node.js libraries.
@@ -27,8 +26,8 @@ import { defineConfig } from "tsup";
  * });
  * ```
  */
-export function makeTsupConfig(c: Options = {}) {
-    return defineConfig({
+export function makeTsupConfig(c: Options = {}): Options {
+    return {
         // Entry points
         entry: ["src/index.ts"],
 
@@ -66,5 +65,5 @@ export function makeTsupConfig(c: Options = {}) {
 
         // Allow user overrides
         ...c,
-    });
+    };
 }
