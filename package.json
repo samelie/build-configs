@@ -74,7 +74,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@rad/config": "workspace:*",
+    "@adddog/monorepo-consistency": "workspace:*",
     "@rad/vite": "workspace:*",
     "@types/node": "^25.2.3",
     "bumpp": "^10.4.1",
