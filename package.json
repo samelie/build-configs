@@ -1,6 +1,6 @@
 {
   "name": "@adddog/build-configs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Reusable build configurations for tsup and unbuild",
   "type": "module",
   "author": "Sam Elie <sam@add.dog>",
