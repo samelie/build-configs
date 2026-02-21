@@ -59,7 +59,8 @@
     "prepack": "pnpm run prepublishOnly",
     "test": "vitest --watch=false",
     "dev": "tsx src/index.ts",
-    "knip": "knip"
+    "knip": "knip",
+    "version:patch": "npm version patch --no-git-tag-version"
   },
   "dependencies": {
     "@clack/prompts": "^1.0.1",
