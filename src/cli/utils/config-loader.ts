@@ -28,7 +28,7 @@ const CONFIG_FILES = [
 /**
  * Detect which bundler is being used based on existing config files
  */
-export async function detectBundler(
+async function detectBundler(
     cwd: string = process.cwd(),
 ): Promise<"tsup" | "unbuild" | null> {
     // Check for tsup config
@@ -127,7 +127,7 @@ export async function discoverConfigFile(
 /**
  * Load config from a file
  */
-export async function loadConfigFile<T = TsupOptions | UnbuildConfig>(
+async function loadConfigFile<T = TsupOptions | UnbuildConfig>(
     configPath: string,
     cwd: string = process.cwd(),
 ): Promise<T | null> {

@@ -10,6 +10,14 @@ export default defineKnipConfig({
         "@adddog/monorepo-consistency"
     ],
     "ignoreBinaries": [
-        "knip"
+        "knip",
+        "tsx"
+    ],
+    "entry": [
+        "src/index.ts",
+        "src/cli/index.ts"
+    ],
+    "project": [
+        "src/**/*.ts"
     ]
 });

@@ -93,21 +93,3 @@ export function generatePackageJsonExports(
         };
     }
 }
-
-/**
- * Generate complete tsconfig.json for build
- */
-export function generateTsConfig(): string {
-    return `{
-  "extends": "@rad/config/base.tsconfig.json",
-  "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": "src",
-    "declaration": true,
-    "declarationMap": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
-}
-`;
-}

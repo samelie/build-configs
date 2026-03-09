@@ -39,7 +39,7 @@ const TsupEntrySchema = z.union([
 /**
  * Zod schema for tsup configuration
  */
-export const TsupConfigSchema = z.object({
+const TsupConfigSchema = z.object({
     name: z.string().optional(),
     entry: TsupEntrySchema.optional(),
     entryPoints: TsupEntrySchema.optional(),
@@ -111,7 +111,7 @@ const UnbuildEntrySchema = z.union([
 /**
  * Zod schema for unbuild configuration
  */
-export const UnbuildConfigSchema = z.object({
+const UnbuildConfigSchema = z.object({
     name: z.string().optional(),
     rootDir: z.string().optional(),
     entries: z.array(UnbuildEntrySchema).optional(),

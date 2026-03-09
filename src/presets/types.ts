@@ -18,8 +18,3 @@ export interface PresetConfig {
 export interface PresetCollection {
     [key: string]: PresetConfig;
 }
-
-/**
- * Preset categories for organization
- */
-export type PresetCategory = "library" | "cli" | "component" | "app";

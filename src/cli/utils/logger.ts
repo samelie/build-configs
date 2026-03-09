@@ -51,21 +51,21 @@ export function logError(message: string, error?: Error): void {
 /**
  * Log a formatted warning message
  */
-export function logWarning(message: string): void {
+function logWarning(message: string): void {
     logger.warn(colors.warning(message));
 }
 
 /**
  * Log a formatted info message
  */
-export function logInfo(message: string): void {
+function logInfo(message: string): void {
     logger.info(colors.info(message));
 }
 
 /**
  * Log a formatted step message
  */
-export function logStep(step: number, total: number, message: string): void {
+function logStep(step: number, total: number, message: string): void {
     logger.info(
         `${colors.dim(`[${step}/${total}]`)} ${colors.primary(message)}`,
     );
@@ -74,7 +74,7 @@ export function logStep(step: number, total: number, message: string): void {
 /**
  * Log a formatted file path
  */
-export function logFile(action: string, path: string): void {
+function logFile(action: string, path: string): void {
     logger.info(`${colors.success(action)} ${colors.file(path)}`);
 }
 
