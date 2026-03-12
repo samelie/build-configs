@@ -26,6 +26,8 @@ import type { Options } from "tsup";
  * });
  * ```
  */
+const NODE_MODULES_RE = /node_modules/;
+
 export function makeTsupConfig(c: Options = {}): Options {
     return {
         // Entry points
@@ -61,7 +63,7 @@ export function makeTsupConfig(c: Options = {}): Options {
 
         // Dependencies
         skipNodeModulesBundle: true, // Don't bundle node_modules
-        external: [/node_modules/], // Mark all node_modules as external
+        external: [NODE_MODULES_RE], // Mark all node_modules as external
 
         // Allow user overrides
         ...c,
