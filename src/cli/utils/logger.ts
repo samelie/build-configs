@@ -49,36 +49,6 @@ export function logError(message: string, error?: Error): void {
 }
 
 /**
- * Log a formatted warning message
- */
-export function logWarning(message: string): void {
-    logger.warn(colors.warning(message));
-}
-
-/**
- * Log a formatted info message
- */
-export function logInfo(message: string): void {
-    logger.info(colors.info(message));
-}
-
-/**
- * Log a formatted step message
- */
-export function logStep(step: number, total: number, message: string): void {
-    logger.info(
-        `${colors.dim(`[${step}/${total}]`)} ${colors.primary(message)}`,
-    );
-}
-
-/**
- * Log a formatted file path
- */
-export function logFile(action: string, path: string): void {
-    logger.info(`${colors.success(action)} ${colors.file(path)}`);
-}
-
-/**
  * Log bundler selection
  */
 export function logBundler(bundler: "tsup" | "unbuild"): void {

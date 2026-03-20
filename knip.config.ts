@@ -2,10 +2,7 @@
 // Do not edit manually - regenerate with: mono knip generate
 import { defineKnipConfig } from "@adddog/monorepo-consistency";
 
-export default defineKnipConfig({
-    entry: ["src/index.ts"],
-    project: ["src/**/*.ts"],
-}, {
+export default defineKnipConfig({}, {
     ignoreDependencies: [
         "@adddog/monorepo-consistency",
     ],
