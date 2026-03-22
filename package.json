@@ -73,7 +73,7 @@
     "@adddog/monorepo-consistency": "workspace:*",
     "@types/node": "^25.5.0",
     "bumpp": "^11.0.1",
-    "eslint": "^10.0.3",
+    "eslint": "^10.1.0",
     "typescript": "^5.9.3",
     "vitest": "^4.1.0"
   },
