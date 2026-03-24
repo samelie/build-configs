@@ -22,7 +22,7 @@ describe("makeTsupConfig", () => {
         const config = makeTsupConfig();
         expect(config.dts).toEqual({
             resolve: true,
-            compilerOptions: { strict: true },
+            compilerOptions: { strict: true, ignoreDeprecations: "6.0" },
         });
     });
 
