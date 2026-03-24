@@ -41,6 +41,9 @@ export function makeTsupConfig(c: Options = {}): Options {
             resolve: true, // Resolve external types from node_modules
             compilerOptions: {
                 strict: true,
+                // tsup internally sets baseUrl in its temp tsconfig for DTS,
+                // which TS6 treats as a deprecated option error
+                ignoreDeprecations: "6.0",
             },
         },
 
