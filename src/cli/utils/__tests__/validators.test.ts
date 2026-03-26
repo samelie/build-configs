@@ -99,7 +99,7 @@ describe("validateTsupConfig", () => {
 
     it("accepts external as array of strings and regexps", () => {
         const result = validateTsupConfig({
-            // eslint-disable-next-line e18e/prefer-static-regex -- test-only inline regex
+
             external: ["react", /node_modules/],
         });
         expect(result.success).toBe(true);
@@ -214,7 +214,7 @@ describe("validateUnbuildConfig", () => {
 
     it("accepts externals with strings and regexps", () => {
         const result = validateUnbuildConfig({
-            // eslint-disable-next-line e18e/prefer-static-regex -- test-only inline regex
+
             externals: ["react", /^node:/],
         });
         expect(result.success).toBe(true);
