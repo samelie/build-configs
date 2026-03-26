@@ -50,7 +50,6 @@
     "lint:fix": "eslint --fix .",
     "release": "bumpp --yes --no-push --no-tag --release patch",
     "types": "tsc -p tsconfig.typecheck.json",
-    "prepublishOnly": "pnpm run types && pnpm run build",
     "prepack": "pnpm run prepublishOnly",
     "test": "vitest --watch=false",
     "dev": "tsx src/index.ts",
@@ -105,5 +104,6 @@
     "node": ">= 22",
     "pnpm": ">= 10",
     "npm": ">= 11"
-  }
+  },
+  "private": true
 }
