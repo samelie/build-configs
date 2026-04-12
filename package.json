@@ -60,7 +60,7 @@
     "@clack/prompts": "^1.2.0",
     "cac": "^7.0.0",
     "consola": "^3.4.2",
-    "defu": "^6.1.6",
+    "defu": "^6.1.7",
     "execa": "^9.6.1",
     "jiti": "^2.6.1",
     "picocolors": "^1.1.1",
@@ -70,11 +70,11 @@
   },
   "devDependencies": {
     "@adddog/monorepo-consistency": "workspace:*",
-    "@types/node": "^25.5.2",
+    "@types/node": "^25.6.0",
     "bumpp": "^11.0.1",
     "eslint": "^10.2.0",
     "typescript": "^6.0.2",
-    "vitest": "^4.1.2"
+    "vitest": "^4.1.4"
   },
   "publishConfig": {
     "access": "public",
