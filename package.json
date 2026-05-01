@@ -66,14 +66,14 @@
     "picocolors": "^1.1.1",
     "tsup": "^8.5.1",
     "unbuild": "^3.6.1",
-    "zod": "^4.3.6"
+    "zod": "^4.4.1"
   },
   "devDependencies": {
     "@adddog/monorepo-consistency": "workspace:*",
     "@types/node": "^25.6.0",
     "@typescript/native-preview": "beta",
     "bumpp": "^11.0.1",
-    "eslint": "^10.2.1",
+    "eslint": "^10.3.0",
     "vitest": "^4.1.5"
   },
   "publishConfig": {
