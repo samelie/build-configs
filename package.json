@@ -57,7 +57,7 @@
     "version:patch": "npm version patch --no-git-tag-version"
   },
   "dependencies": {
-    "@clack/prompts": "^1.5.0",
+    "@clack/prompts": "^1.5.1",
     "cac": "^7.0.0",
     "consola": "^3.4.2",
     "defu": "^6.1.7",
