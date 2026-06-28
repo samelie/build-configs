@@ -57,7 +57,7 @@
     "version:patch": "npm version patch --no-git-tag-version"
   },
   "dependencies": {
-    "@clack/prompts": "^1.5.1",
+    "@clack/prompts": "^1.6.0",
     "cac": "^7.0.0",
     "consola": "^3.4.2",
     "defu": "^6.1.7",
@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "@adddog/monorepo-consistency": "workspace:*",
-    "@types/node": "^26.0.0",
+    "@types/node": "^26.0.1",
     "@typescript/native-preview": "beta",
     "bumpp": "^11.1.0",
     "eslint": "^10.5.0",
