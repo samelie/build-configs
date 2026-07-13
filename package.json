@@ -70,10 +70,10 @@
   },
   "devDependencies": {
     "@adddog/monorepo-consistency": "workspace:*",
-    "@types/node": "^26.1.0",
+    "@types/node": "^26.1.1",
     "@typescript/native-preview": "beta",
     "bumpp": "^11.1.0",
-    "eslint": "^10.6.0",
+    "eslint": "^10.7.0",
     "vitest": "^4.1.10"
   },
   "publishConfig": {
